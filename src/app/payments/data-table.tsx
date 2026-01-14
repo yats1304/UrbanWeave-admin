@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/table";
 import { TablePagination } from "@/components/common/TablePagination";
 import { useState } from "react";
+import { Trash2 } from "lucide-react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -46,7 +47,15 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="overflow-hidden rounded-md border">
+    <div className="rounded-md border">
+      {Object.keys(rowSelection).length > 0 && (
+        <div className="flex justify-end">
+          <button className="flex items-center gap-2 bg-red-500 text-white px-2 py-1 text-sm rounded-md mt-4 cursor-pointer">
+            <Trash2 className="w-4 h-4" />
+            Delete Payment(s)
+          </button>
+        </div>
+      )}
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
@@ -89,24 +98,7 @@ export function DataTable<TData, TValue>({
           )}
         </TableBody>
       </Table>
-      {/* <div className="flex items-center justify-end space-x-2 py-4">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          Next
-        </Button>
-      </div> */}
+
       <TablePagination table={table} />
     </div>
   );
