@@ -43,6 +43,22 @@ const SingleUserPage = () => {
       <div className="mt-4 flex flex-col xl:flex-row gap-8">
         {/* Left */}
         <div className="w-full xl:w-1/3 space-y-6">
+          {/* User card container */}
+          <div className="bg-primary-foreground p-4 rounded-lg space-y-2">
+            <div className="flex items-center gap-2">
+              <Avatar className="size-12">
+                <AvatarImage src="https://avatars.githubusercontent.com/u/94347757?v=4" />
+                <AvatarFallback>YC</AvatarFallback>
+              </Avatar>
+              <h1 className="text-xl font-semibold">Yatish Chaubal</h1>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry's standard dummy text
+              ever since the 1500s, when an unknown printer took a galley of
+              type and scrambled it
+            </p>
+          </div>
           {/* User Badges container */}
           <div className="bg-primary-foreground p-4 rounded-lg ">
             <h1 className="text-xl font-semibold">User Badges</h1>
@@ -125,7 +141,7 @@ const SingleUserPage = () => {
                 <Progress value={66} />
               </div>
               <div className="flex items-center gap-2 ">
-                <span>Username:</span>
+                <span>Full Name:</span>
                 <span>Yatish Chaubal</span>
               </div>
               <div className="flex items-center gap-2 ">
@@ -137,41 +153,21 @@ const SingleUserPage = () => {
                 <span>+91 8551994340</span>
               </div>
               <div className="flex items-center gap-2 ">
-                <span>Location:</span>
-                <span>Mumbai</span>
+                <span>Address:</span>
+                <span>Mumbai, Matunga Jn</span>
               </div>
               <div className="flex items-center gap-2 ">
-                <span>Role:</span>
-                <Badge>Admin</Badge>
+                <span>City:</span>
+                <span>Mumbai</span>
               </div>
             </div>
             <p className="text-sm text-muted-foreground mt-4">
               Joined on 18.01.25
             </p>
           </div>
-          {/* Cart List container */}
-          <div className="bg-primary-foreground p-4 rounded-lg ">
-            <CardList title="Recent Transations" />
-          </div>
         </div>
         {/* Right */}
         <div className="w-full xl:w-2/3 space-y-6">
-          {/* User card container */}
-          <div className="bg-primary-foreground p-4 rounded-lg space-y-2">
-            <div className="flex items-center gap-2">
-              <Avatar className="size-12">
-                <AvatarImage src="https://avatars.githubusercontent.com/u/94347757?v=4" />
-                <AvatarFallback>YC</AvatarFallback>
-              </Avatar>
-              <h1 className="text-xl font-semibold">Yatish Chaubal</h1>
-            </div>
-            <p className="text-sm text-muted-foreground">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it
-            </p>
-          </div>
           {/* Chart container */}
           <div className="bg-primary-foreground p-4 rounded-lg ">
             <h1 className="text-xl font-semibold">User Activity</h1>

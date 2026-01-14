@@ -1,12 +1,12 @@
 "use client";
 
-import { useForm } from "react-hook-form";
 import {
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "../ui/sheet";
+} from "@/components/ui/sheet";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -25,36 +25,29 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../ui/select";
+} from "@/components/ui/select";
 import { Button } from "../ui/button";
 
 const formSchema = z.object({
-  username: z
+  fullName: z
     .string()
-    .min(2, "Username must be at least 2 characters!")
+    .min(2, { message: "Full name must be at least 2 characters!" })
     .max(50),
-
-  email: z.email("Invalid email address!"),
-
-  phone: z
-    .number()
-    .min(10, "Mobile number should be 10 numbers")
-    .max(10, "Mobile number should be 10 numbers"),
-
-  location: z.string().min(2, "Please enter location"),
-
-  role: z.enum(["admin", "user"]),
+  email: z.string().email({ message: "Invalid email address!" }),
+  phone: z.string().min(10).max(15),
+  address: z.string().min(2),
+  city: z.string().min(2),
 });
 
 const EditUser = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username: "Yatish Chaubal",
-      email: "chuablay@gmail.com",
-      phone: 8551994340,
-      location: "Mumbai",
-      role: "admin",
+      fullName: "Yatish Chaubal",
+      email: "chaubaly@gmail.com",
+      phone: "+91 8551994340",
+      address: "Mumbai, Matunga Jn",
+      city: "Mumbai",
     },
   });
   return (
@@ -66,16 +59,14 @@ const EditUser = () => {
             <form className="space-y-8">
               <FormField
                 control={form.control}
-                name="username"
+                name="fullName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Username</FormLabel>
+                    <FormLabel>Full Name</FormLabel>
                     <FormControl>
                       <Input {...field} />
                     </FormControl>
-                    <FormDescription>
-                      This is your public username.
-                    </FormDescription>
+                    <FormDescription>Enter user full name.</FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -106,7 +97,7 @@ const EditUser = () => {
                       <Input {...field} />
                     </FormControl>
                     <FormDescription>
-                      Only admin can see your phone.
+                      Only admin can see your phone number (optional)
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -114,15 +105,15 @@ const EditUser = () => {
               />
               <FormField
                 control={form.control}
-                name="location"
+                name="address"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Location</FormLabel>
+                    <FormLabel>Address</FormLabel>
                     <FormControl>
                       <Input {...field} />
                     </FormControl>
                     <FormDescription>
-                      This is the public location.
+                      Enter user address (optional)
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -130,23 +121,15 @@ const EditUser = () => {
               />
               <FormField
                 control={form.control}
-                name="role"
+                name="city"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Role</FormLabel>
+                    <FormLabel>City</FormLabel>
                     <FormControl>
-                      <Select>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Role" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="admin">Admin</SelectItem>
-                          <SelectItem value="user">User</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <Input {...field} />
                     </FormControl>
                     <FormDescription>
-                      Only verified user can be admin
+                      Enter user city (optional)
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
