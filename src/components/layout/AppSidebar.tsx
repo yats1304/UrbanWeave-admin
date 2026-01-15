@@ -47,6 +47,10 @@ import {
 import { Sheet, SheetTrigger } from "../ui/sheet";
 
 import EditUser from "../common/EditUser";
+import AddOrder from "../common/AddOrder";
+import AddUser from "../common/AddUser";
+import AddCategory from "../common/AddCategory";
+import AddProduct from "../common/AddProduct";
 
 const items = [
   {
@@ -140,7 +144,7 @@ const AppSidebar = () => {
                         </Link>
                       </SidebarMenuButton>
                     </SheetTrigger>
-                    <EditUser />
+                    <AddProduct />
                   </Sheet>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -155,7 +159,7 @@ const AppSidebar = () => {
                         </Link>
                       </SidebarMenuButton>
                     </SheetTrigger>
-                    <EditUser />
+                    <AddCategory />
                   </Sheet>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -166,7 +170,7 @@ const AppSidebar = () => {
         <SidebarGroup>
           <SidebarGroupLabel>Users</SidebarGroupLabel>
           <SidebarGroupAction>
-            <Plus /> <span className="sr-only">Add Users</span>
+            <Plus /> <span className="sr-only">Add User</span>
           </SidebarGroupAction>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -189,7 +193,7 @@ const AppSidebar = () => {
                         </Link>
                       </SidebarMenuButton>
                     </SheetTrigger>
-                    <EditUser />
+                    <AddUser />
                   </Sheet>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -223,7 +227,7 @@ const AppSidebar = () => {
                         </Link>
                       </SidebarMenuButton>
                     </SheetTrigger>
-                    <EditUser />
+                    <AddOrder />
                   </Sheet>
                 </SidebarMenuButton>
               </SidebarMenuItem>
